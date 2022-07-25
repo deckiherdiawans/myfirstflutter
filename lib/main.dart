@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'image_banner.dart';
+import 'text_section.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,7 +11,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Welcome to Flutter!',
       home: RandomWords(),
     );
   }
@@ -31,8 +32,38 @@ class RandomWordsState extends State<RandomWords> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Startup Name Generator'),
+        centerTitle: true,
       ),
-      body: buildSuggestions(),
+      body: Scaffold(
+        appBar: AppBar(
+          title: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: const [
+              ImageBanner("assets/images/windows_xp.jpg"),
+            ],
+          ),
+          titleSpacing: 0,
+          toolbarHeight: 150,
+        ),
+        body: Scaffold(
+          appBar: AppBar(
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: const [
+                TextSection(Colors.red),
+                TextSection(Colors.yellow),
+                TextSection(Colors.green),
+                TextSection(Colors.blue),
+              ],
+            ),
+            titleSpacing: 0,
+            toolbarHeight: 108,
+          ),
+          body: buildSuggestions(),
+        ),
+      ),
     );
   }
 
